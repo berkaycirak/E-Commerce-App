@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { CardContext } from '../../contexts/card.contex';
 
 const CardIcon = () => {
-  const { isCardOpen, setIsCardOpen } = useContext(CardContext);
+  const { isCardOpen, setIsCardOpen, cardCount } = useContext(CardContext);
 
   const handleClick = () => {
     setIsCardOpen(!isCardOpen);
@@ -12,7 +12,7 @@ const CardIcon = () => {
   return (
     <div onClick={handleClick} className='card-icon-container'>
       <ShoppingIcon className='shopping-icon' />
-      <span className='item-count'>0</span>
+      <span className='item-count'>{cardCount}</span>
     </div>
   );
 };
