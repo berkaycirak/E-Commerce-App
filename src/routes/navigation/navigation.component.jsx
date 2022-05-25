@@ -3,9 +3,13 @@ import { Link, Outlet } from 'react-router-dom';
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 import { UserContext } from '../../contexts/user.context';
 import './navigation.styles.scss';
+import { CardContext } from '../../contexts/card.contex';
 import { signOutUser } from '../../utilities/firebase/firebase.utils';
+import CardIcon from '../../components/card-icon/card-icon.component';
+import CardDropdown from '../../components/card-dropdown/card-dropdown.component';
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
+  const { isCardOpen } = useContext(CardContext);
 
   return (
     <Fragment>
@@ -26,7 +30,9 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
+          <CardIcon />
         </div>
+        {isCardOpen && <CardDropdown />}
       </div>
       <Outlet />
     </Fragment>
